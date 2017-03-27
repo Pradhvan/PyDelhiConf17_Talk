@@ -10,7 +10,9 @@ print("Loggin in Twitter")
 user=browser.find_elements_by_xpath('//*[@id="login-dialog-dialog"]/div[2]/div[2]/div[2]/form/div[1]/input')
 user[0].send_keys('USER-NAME') #Enter User Name 
 user=browser.find_element_by_xpath('//*[@id="login-dialog-dialog"]/div[2]/div[2]/div[2]/form/div[2]/input')
-user.send_keys('Password') #Enter Password 
+with open('test.txt', 'r') as myfile:   #Reads password from a text file 
+    Password=myfile.read().replace('\n', '')
+user.send_keys(Password) #Enter Password 
 LOG=browser.find_elements_by_xpath('//*[@id="login-dialog-dialog"]/div[2]/div[2]/div[2]/form/input[1]')
 LOG[0].click()
 print ("Login Sucessfull")
